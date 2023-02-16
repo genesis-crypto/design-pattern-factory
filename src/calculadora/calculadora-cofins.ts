@@ -1,14 +1,10 @@
 import { Calculadora } from './interface/calculadora-interface'
 
-export class CofinsCalculadora implements Calculadora {
-    public percentual: number
-    
-    constructor(percentual: number) {
-        this.percentual = percentual
-    }
-
+export class CofinsCalculadora implements Calculadora {    
     realizaCalculo(valor: number): number {
-        return valor * (1 - this.percentual)
+        if (valor > 1000) {
+            return valor - 100
+        }
+        return valor
     }
-
 }
