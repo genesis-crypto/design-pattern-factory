@@ -1,5 +1,6 @@
 import { Orcamento } from './orcamento'
+import { Produto } from './interface/orcamento-interface'
 
-export function criaOrcamento(valor: number) {
-    return new Orcamento(valor)
+export function criaOrcamento(produtos: Produto[]) {
+    return new Orcamento(produtos)
 }
