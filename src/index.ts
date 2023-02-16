@@ -1,10 +1,13 @@
 import { criaOrcamento } from './orcamento'
-import { fazerCalculadoraICMS, fazerCalculadorCofins } from './calculadora'
+import { fazerCalculadoraICMS, fazerCalculadoraCofins, fazerCalculadoraPIS, fazerCalculadoraIPI } from './calculadora'
 
 const calculadoraICMS = fazerCalculadoraICMS(0.10)
-const calculadoraCofins = fazerCalculadorCofins(0.2)
-const orcamento = criaOrcamento(1000)
-console.log(`Pré ICMS & Cofins ${orcamento.valor}`)
+const calculadoraCofins = fazerCalculadoraCofins()
+const calculadoraPIS = fazerCalculadoraPIS()
+const calculadoraIPI = fazerCalculadoraIPI()
 
-const valorPosImpostos = orcamento.calculaImpostos([calculadoraICMS, calculadoraCofins])
-console.log(`Pós ICMS & Cofins ${valorPosImpostos}`)
+const orcamento = criaOrcamento([{nome: "Notebook", valor: 1000}, {nome: "Desktop",valor: 2000}])
+console.log(`Pré ICMS & Cofins & PIS & IPI ${orcamento.valor}`)
+
+const valorPosImpostos = orcamento.calculaImpostos([calculadoraICMS, calculadoraCofins, calculadoraPIS, calculadoraIPI])
+console.log(`Pós ICMS & Cofins & PIS & IPI ${valorPosImpostos}`)
