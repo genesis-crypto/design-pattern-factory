@@ -12,10 +12,14 @@ export class Orcamento implements OrcamentoInterface {
     }
 
     calculaImpostos(calculadoras: Calculadora[]): number {
+        const valorSemDesconto = this.valor
+
         calculadoras.forEach((each) => {
             const valorDescontado = each.realizaCalculo(this.valor)
             this.valor = valorDescontado
         })
+
+        console.log(`Valor Imposto: ${valorSemDesconto - this.valor}`)
 
         return this.valor
     }

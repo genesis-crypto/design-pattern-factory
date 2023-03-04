@@ -12,6 +12,7 @@ export class QuantidadeDesconto implements DescontoInterface {
         const qtde = orcamento.produtos.reduce((acc, current) => acc + current.quantidade, 0)
 
         if (qtde > 5) {
+            console.log(`Valor Desconto: ${orcamento.valor * this.percentual}`)
             return orcamento.valor * (1 - this.percentual)
         }
     
