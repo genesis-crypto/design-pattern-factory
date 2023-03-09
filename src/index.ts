@@ -1,18 +1,18 @@
 import { criaOrcamento } from './orcamento'
-import { fazerCalculadoraICMS, fazerCalculadoraCofins, fazerCalculadoraPIS, fazerCalculadoraIPI } from './calculadora'
-import { fazerDescontoQuantidade, fazerDescontoValor } from './desconto'
+import { ICMCalculadora } from './calculadora/caludora-icms'
+import { PISCalculadora } from './calculadora/calculadora-pis'
+import { CofinsCalculadora } from './calculadora/calculadora-cofins'
+import { IPICalculadora } from './calculadora/calculadora-ipi'
+import { CalculadoraConcreta } from './calculadora/calculadora'
 
-const calculadoraICMS = fazerCalculadoraICMS(0.10)
-const calculadoraCofins = fazerCalculadoraCofins()
-const calculadoraPIS = fazerCalculadoraPIS()
-const calculadoraIPI = fazerCalculadoraIPI()
-const calculaDescontoQuantidade = fazerDescontoQuantidade(0.1)
-const calculaDescontoValor = fazerDescontoValor(0.2)
+const calculadora = new CalculadoraConcreta()
+const calculadoraICMS = new ICMCalculadora(calculadora)
+const calculadoraPIS = new PISCalculadora(calculadoraICMS)
+const calculadoraConfis = new CofinsCalculadora(calculadoraPIS)
+const calculadoraIPI = new IPICalculadora(calculadoraConfis)
 
 const orcamento = criaOrcamento([{ nome: "Notebook", valor: 1000, quantidade: 1000 }, { nome: "Desktop", valor: 2000, quantidade: 1000 }])
 
-console.log(`Pré Descontos & ICMS & Cofins & PIS & IPI ${orcamento.valor}`)
-const valorPosDescontos = orcamento.calculaDescontos([calculaDescontoQuantidade, calculaDescontoValor])
-console.log(`Pós Descontos ${valorPosDescontos}`)
-const valorPosImpostos = orcamento.calculaImpostos([calculadoraICMS, calculadoraCofins, calculadoraPIS, calculadoraIPI])
-console.log(`Pós ICMS & Cofins & PIS & IPI ${valorPosImpostos}`)
+const valor = calculadoraIPI.realizaCalculo(orcamento.valor)
+console.log('Valor Pós ICMS -> PIS -> Cofins -> IPI: ', valor)
+

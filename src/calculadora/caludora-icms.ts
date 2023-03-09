@@ -1,13 +1,9 @@
-import { Calculadora } from './interface/calculadora-interface'
+import { DecoratorCalculadora } from './decorator-calculadora'
 
-export class ICMCalculadora implements Calculadora {
-    public percentual: number
-    
-    constructor(percentual: number) {
-        this.percentual = percentual
-    }
-
+export class ICMCalculadora extends DecoratorCalculadora {
     realizaCalculo(valor: number): number {
-        return valor * (1 - this.percentual)
+        valor = valor + 18
+        console.log(`calculando ICMS...`)
+        return super.realizaCalculo(valor)
     }
 }

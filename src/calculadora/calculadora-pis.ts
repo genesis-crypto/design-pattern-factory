@@ -1,7 +1,9 @@
-import { Calculadora } from './interface/calculadora-interface'
+import { DecoratorCalculadora } from './decorator-calculadora'
 
-export class PISCalculadora implements Calculadora {
+export class PISCalculadora extends DecoratorCalculadora {
     realizaCalculo(valor: number): number {
-        return valor - 10
+        valor = valor * (1 + .1)
+        console.log(`calculando PIS...`)
+        return super.realizaCalculo(valor)
     }
 }

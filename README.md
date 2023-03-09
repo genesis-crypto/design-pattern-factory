@@ -1,10 +1,3 @@
-# Design Pattern Factory
-
-Este repositório foi criado para ilustrar a implementação do Design Pattern Factory em uma aplicação de exemplo.
-
-O que é o Design Pattern Factory?
-O Design Pattern Factory é um padrão de projeto de software que é usado para abstrair o processo de criação de objetos. Ele permite que você crie objetos sem precisar especificar a classe exata do objeto a ser criado. Em vez disso, você pode delegar a criação de objetos a uma fábrica, que retornará a instância correta de acordo com as especificações fornecidas.
-
 ## Pastas
 Este repositório inclui as seguintes pastas:
 

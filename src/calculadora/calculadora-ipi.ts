@@ -1,7 +1,9 @@
-import { Calculadora } from "./interface/calculadora-interface";
+import { DecoratorCalculadora } from './decorator-calculadora'
 
-export class IPICalculadora implements Calculadora {
+export class IPICalculadora extends DecoratorCalculadora {
     realizaCalculo(valor: number): number {
-        return valor * 0.99
+        valor = valor + 0.4
+        console.log(`calculando IPI...`)
+        return super.realizaCalculo(valor)
     }
 }

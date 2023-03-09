@@ -1,10 +1,11 @@
-import { Calculadora } from './interface/calculadora-interface'
+import { DecoratorCalculadora } from './decorator-calculadora'
 
-export class CofinsCalculadora implements Calculadora {    
+export class CofinsCalculadora extends DecoratorCalculadora {    
     realizaCalculo(valor: number): number {
         if (valor > 1000) {
-            return valor - 100
+            valor = valor + 100
         }
-        return valor
+        console.log(`calculando Cofins...`)
+        return super.realizaCalculo(valor)
     }
 }

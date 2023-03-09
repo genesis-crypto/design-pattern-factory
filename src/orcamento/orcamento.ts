@@ -1,5 +1,4 @@
 import { Calculadora } from '../calculadora/interface/calculadora-interface';
-import { Desconto } from '../desconto/interface/desconto-interface';
 import { Orcamento as OrcamentoInterface, Produto } from './interface/orcamento-interface'
 
 export class Orcamento implements OrcamentoInterface {
@@ -22,16 +21,5 @@ export class Orcamento implements OrcamentoInterface {
         console.log(`Valor Imposto: ${valorSemDesconto - this.valor}`)
 
         return this.valor
-    }
-
-    calculaDescontos(descontos: Desconto[]): number {
-        const todosDescontos: number[] = []
-
-        descontos.forEach((each) => {
-            const valor = each.realizaCalculo(this)
-            todosDescontos.push(valor)
-        })
-
-        return todosDescontos[0]
     }
 }

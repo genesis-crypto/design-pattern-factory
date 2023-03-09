@@ -1,5 +1,4 @@
 import { Calculadora } from '../../calculadora/interface/calculadora-interface'
-import { Desconto } from '../../desconto/interface/desconto-interface'
 
 export type Produto = {
     nome: string
@@ -12,5 +11,4 @@ export interface Orcamento {
     produtos: Produto[]
 
     calculaImpostos(calculadora: Calculadora[]): number
-    calculaDescontos(descontos: Desconto[]): number
 }
